@@ -4,11 +4,14 @@
   "description": "GTSOL Frontend Stub",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Crispin Schaeffler <crispin.schaeffler@gtsol.com>",
   "license": "ISC",
   "dependencies": {
-    "restify": "^8.5.1"
+    "dotenv": "^8.2.0",
+    "restify": "^8.5.1",
+    "uuid": "^8.3.2",
+    "validatorjs": "^3.22.1"
   }
 }
