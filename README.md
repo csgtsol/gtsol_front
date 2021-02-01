@@ -25,6 +25,8 @@ Technical Restrictions:
 
 As far as frontend frameworks go, you can choose. Keep in mind that a high degree of usability should be achieved.
 
+If you want to change something on the backend side, clone the repo and make it available for us for testing purposes.
+
 ## API Documentation
 
 ### GET /users
