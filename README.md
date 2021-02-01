@@ -23,7 +23,7 @@ Technical Restrictions:
 
 * HTML / CSS / JavaScript
 
-As far as frontend frameworks go, you can choose. Keep in mind that a high degree of usability should be achieved.
+As far as frontend frameworks go, you can choose. Keep in mind that the focus lies on user experience.
 
 If you want to change something on the backend side, clone the repo and make it available for us for testing purposes.
 
