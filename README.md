@@ -55,3 +55,7 @@ Params:
 
 * uid: UUIDv4 of the user
 * id: UUIDv4 of the time
+
+### Further Info
+
+Check out the test folder for example requests
