@@ -4,7 +4,8 @@
   "description": "GTSOL Frontend Stub",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
   },
   "author": "Crispin Schaeffler <crispin.schaeffler@gtsol.com>",
   "license": "ISC",
@@ -13,5 +14,10 @@
     "restify": "^8.5.1",
     "uuid": "^8.3.2",
     "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.1"
   }
 }

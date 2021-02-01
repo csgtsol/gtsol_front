@@ -43,14 +43,33 @@ server.get("/users", function(req, res) {
 	});
 });
 
+server.get("/users/:uid", function(req, res) {
+	var user = Users.find(u => u.id == req.params.uid);
+	if(user) {
+		res.send(200, {
+			data: user,
+			errors: null
+		});
+	} else {
+		res.send(404, {
+			data: null,
+			errors: [
+				{
+					message: "User not found"
+				}
+			]
+		});
+	}
+});
+
 server.post("/users", function(req, res) {
 	var user = req.body;
 	var valid = new Validator(user, UserRules);
 	if(valid.passes() && !Users.find(user => user.email == req.body.email)) {
 		user["id"] = uuidv4();
 		Users.push(user);
-		res.send(200, {
-			data: user,
+		res.send(201, {
+			data: user.id,
 			errors: null
 		});
 	} else {
@@ -62,11 +81,22 @@ server.post("/users", function(req, res) {
 });
 
 server.get("/users/:uid/times", function(req, res) {
-	var times = Times.filter(time => time.user_id == req.params.uid);
-	res.send(200, {
-		data: times,
-		errors: null
-	});
+	if(Users.find(u => u.id == req.params.uid)) {
+		var times = Times.filter(time => time.user_id == req.params.uid);
+		res.send(200, {
+			data: times,
+			errors: null
+		});
+	} else {
+		res.send(404, {
+			data: null,
+			errors: [
+				{
+					message: "No such User"
+				}
+			]
+		});
+	}
 });
 
 server.post("/users/:uid/times", function(req, res) {
@@ -74,9 +104,10 @@ server.post("/users/:uid/times", function(req, res) {
 	var valid = new Validator(time, TimeRules);
 	if(valid.passes() && Users.find(user => user.id == req.params.uid)) {
 		time["id"] = uuidv4();
+		time["user_id"] = req.params.uid;
 		Times.push(time);
-		res.send(200, {
-			data: time,
+		res.send(201, {
+			data: time.id,
 			errors: null
 		});
 	} else {
@@ -91,6 +122,27 @@ server.post("/users/:uid/times", function(req, res) {
 	}
 });
 
+server.get("/users/:uid/times/:id", function(req, res) {
+	var time = Times.find(time => time.user_id == req.params.uid && time.id == req.params.id);
+	if(time) {
+		res.send(200, {
+			data: time,
+			errors: null
+		});
+	} else {
+		res.send(404, {
+			data: null,
+			errors: [
+				{
+					message: "No such time for user"
+				}
+			]
+		});
+	}
+});
+
 server.listen(PORT, function() {
 	console.log("Server listening on :%s", PORT);
 });
+
+module.exports = server;
