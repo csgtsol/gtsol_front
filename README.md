@@ -3,6 +3,30 @@
 This is a very small basic REST API for frontend developers. It features 6 routes for functionality.
 
 
+## Instructions
+
+Please create a frontend for this API. The frontend should be able to interact with all API endpoints exposed. Furthermore, the data should be presented in a nice and user friendly way.
+
+For basic functionality:
+
+* You need to be able to create Users
+* You need to be able to display Users
+* You need to be able to view the Times of a User
+* You need to be able to create Times for Users
+
+Additional Functionality:
+
+* Sorting, Filtering of displayed Data
+* Using some kind of graphical presentation would be nice
+
+Technical Restrictions:
+
+* HTML / CSS / JavaScript
+
+As far as frontend frameworks go, you can choose. Keep in mind that a high degree of usability should be achieved.
+
+## API Documentation
+
 ### GET /users
 
 Lists all users
