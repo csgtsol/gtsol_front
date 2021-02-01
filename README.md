@@ -56,6 +56,12 @@ Params:
 * uid: UUIDv4 of the user
 * id: UUIDv4 of the time
 
+### Testing URL
+
+This API is available on Heroku on the EU Region for Testing. However, this App doesnt run all day and if a request is made while it is offline, please allow for some cold start time. And keep in mind it doesnt user persistant storage.
+
+https://morning-harbor-70967.herokuapp.com/
+
 ### Further Info
 
 Check out the test folder for example requests
