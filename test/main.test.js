@@ -52,6 +52,25 @@ describe("Users", function() {
 			});
 		});
 	});
+	describe("GET /users/:uid", function() {
+		it("it should respond with 200 and the user object", function(done) {
+			chai.request(server)
+			.get("/users")
+			.end(function(err, res) {
+				let user = res.body.data[0];
+				chai.request(server)
+				.get(`/users/${user.id}`)
+				.end(function(err, res) {
+					res.should.have.status(200);
+					res.body.data.first_name.should.be.a("string");
+					res.body.data.last_name.should.be.a("string");
+					res.body.data.email.should.be.a("string");
+					res.body.data.id.should.be.a("string");
+					done();
+				});
+			});
+		});
+	});
 });
 
 describe("Times", function() {
@@ -86,7 +105,6 @@ describe("Times", function() {
 			.end(function(err, res) {
 				let user = res.body.data[0];
 				let time = {
-					user_id: user.id,
 					start: new Date(2021, 01, 01, 8, 0, 0, 0),
 					end: new Date(2021, 01, 01, 14, 0, 0, 0)
 				};

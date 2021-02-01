@@ -101,6 +101,7 @@ server.get("/users/:uid/times", function(req, res) {
 
 server.post("/users/:uid/times", function(req, res) {
 	var time = req.body;
+	time["user_id"] = req.params.uid;
 	var valid = new Validator(time, TimeRules);
 	if(valid.passes() && Users.find(user => user.id == req.params.uid)) {
 		time["id"] = uuidv4();
